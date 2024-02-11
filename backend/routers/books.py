@@ -59,10 +59,30 @@ async def add_new_book(new_book: schemas.Book, db: Session = Depends(get_db)):
     return db_book
 
 
+@router.put("/books/{id}", response_model=schemas.Book, status_code=200)
+async def update_book(id: str, new_book: schemas.Book, db: Session = Depends(get_db)):
+    # query and filter for where id = id in url
+    book = db.query(models.Book).filter(models.Book.id == id)
+
+    # error handling
+    if book is None:
+        raise HTTPException(status_code=404, detail="Book not found.")
+
+    # create new book object
+    new_book = dict(new_book)
+
+    # update book and save
+    book.update(new_book)
+    db.commit()
+
+    # successful, return the new book object
+    return book.first()
+
+
 @router.delete("/books/{id}", response_model=list[schemas.Book_With_Id], status_code=200)
-async def delete_book(id: int, db: Session = Depends(get_db)):
+async def delete_book(id: str, db: Session = Depends(get_db)):
     # query and filter where book id = id in url
-    book = db.query(models.Book).fitler(models.Book.id == id).first()
+    book = db.query(models.Book).filter(models.Book.id == id).first()
 
     # error handling, not found
     if book is None:
