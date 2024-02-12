@@ -6,14 +6,10 @@ import schemas as schemas
 
 router = APIRouter()
 
-BOOKS = [{'title': 'A', 'author': 'Andy A'},
-         {'title': 'B', 'author': 'Ben B'}
-         ]
-
 
 @router.get("/test")
 async def test():  # async is optional
-    return {"message": "We are live!"}
+    return {"message": "Book Journey is live!"}
 
 
 @router.get("/books", response_model=list[schemas.Book_With_Id], status_code=200)
@@ -30,9 +26,6 @@ async def read_all_books(db: Session = Depends(get_db)):
 # dynamic param
 @router.get("/books/{title}", response_model=schemas.Book_With_Id, status_code=200)
 async def get_book_by_title(title: str, db: Session = Depends(get_db)):
-    # for book in BOOKS:
-    #     if book.get('title').casefold() == title.casefold():
-    #         return book
     # query and filter where title = title in url
     book = db.query(models.Book).filter(models.Book.title == title).first()
 
