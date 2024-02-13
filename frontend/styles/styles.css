@@ -25,3 +25,11 @@ main {
 #main-container {
     flex-direction: column;
 }
+
+nav {
+    background-color: #637A9F
+}
+
+#show {
+    display: hidden;
+}

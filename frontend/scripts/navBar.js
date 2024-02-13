@@ -66,17 +66,18 @@ function createNavBar(){
     navLinkContainer.id = "nav-link-container"
     navLinkContainer.className = 'navbar-nav'
     navLinkContainer.append(createNavLink('home-nav', "./index.html", 'Home'))
-    navLinkContainer.append(createNavLink('profile-nav', './login.html', 'Profile'))    //revisit
+    navLinkContainer.append(createNavLink('reviews-nav', './reviews.html', 'Reviews'))    
+    navLinkContainer.append(createNavLink('help-nav', './help.html', 'Help'))    
 
     navMarkup.append(navLinkContainer)
 
-    // container for login/logout/registeration 
-    const loginOutContainer = document.createElement('div')
-    loginOutContainer.id = "login-out-nav-container"
-    loginOutContainer.className = 'navbar-nav ml-auto'
-    loginOutContainer.append(createNavLink('login-out', './login.html', 'Login'))
-    loginOutContainer.append(createNavLink('register-nav', './register.html', 'Register'))
-    navMarkup.append(loginOutContainer)
+    // // container for login/logout/registeration 
+    // const loginOutContainer = document.createElement('div')
+    // loginOutContainer.id = "login-out-nav-container"
+    // loginOutContainer.className = 'navbar-nav ml-auto'
+    // loginOutContainer.append(createNavLink('login-out', './login.html', 'Login'))
+    // loginOutContainer.append(createNavLink('register-nav', './register.html', 'Register'))
+    // navMarkup.append(loginOutContainer)
 
     navContainer.append(navMarkup)
     navigation.append(navContainer)
