@@ -6,7 +6,7 @@ from pydantic import BaseModel
 # Book
 class Book(BaseModel):
     title: str
-    author: str
+    # author: str
     summary: str
 
     class Config:

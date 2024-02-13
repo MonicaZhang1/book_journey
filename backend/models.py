@@ -9,7 +9,7 @@ class Book(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, unique=True)
-    author = Column(String)
+    # author = Column(String)
     summary = Column(String)
 
 
