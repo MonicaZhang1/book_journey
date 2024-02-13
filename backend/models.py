@@ -10,7 +10,7 @@ class Book(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, unique=True)
     author = Column(String)
-    url_link = Column(String)
+    summary = Column(String)
 
 
 # Review Model
@@ -20,7 +20,7 @@ class Review(Base):
     id = Column(Integer, primary_key=True, index=True)
     # book_id = Column(Integer)
     book_title = Column(String)
-    description = Column(String)
+    review = Column(String)
 
 
 # User Model

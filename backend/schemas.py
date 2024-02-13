@@ -7,7 +7,7 @@ from pydantic import BaseModel
 class Book(BaseModel):
     title: str
     author: str
-    url_link: str
+    summary: str
 
     class Config:
         from_attributes = True
@@ -20,7 +20,7 @@ class Book_With_Id(Book):
 
 # Review
 class Review(BaseModel):
-    description: str
+    review: str
     book_title: str
 
     class Config:
