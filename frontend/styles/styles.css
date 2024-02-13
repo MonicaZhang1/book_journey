@@ -33,3 +33,13 @@ nav {
 #show {
     display: hidden;
 }
+
+#add-book-container{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: inline-block;
+}

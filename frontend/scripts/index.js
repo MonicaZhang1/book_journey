@@ -1,7 +1,7 @@
 /**
  * Create the book page (homepage)
  */
-let id;
+// let id;
 
 async function displayBooksPage(){
     console.log("displayBooksPage")
@@ -48,13 +48,24 @@ async function displayBook(book) {
     summary.className = 'card-url'
     summary.innerText = book.summary
 
+    const deleteBookBtn = await createBtn('btn btn-outline-primary', 'delete-book-btn', 'Delete')
+    deleteBookBtn.addEventListener('click', ()=>{
+        window.location.href = './deleteBook.html'
+    })
+
     // add to container 
     container.append(title)
     container.append(summary)
+    container.append(deleteBookBtn)
     document.getElementById('book-container').append(container)
 
-    // card clicked, redirect to book's review page
-    container.addEventListener('click', () => {
+    // // card clicked, redirect to book's review page
+    // container.addEventListener('click', () => {
+    //     window.location.href = `./books.html?book=${book.id}`;
+    // })
+
+    // when title is clicked, redirect to book's review page
+    title.addEventListener('click', () => {
         window.location.href = `./books.html?book=${book.id}`;
     })
 }
