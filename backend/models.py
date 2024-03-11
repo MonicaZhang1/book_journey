@@ -18,7 +18,7 @@ class Review(Base):
     __tablename__ = "reviews"
 
     id = Column(Integer, primary_key=True, index=True)
-    # book_id = Column(Integer)
+    book_id = Column(Integer)
     book_title = Column(String)
     review = Column(String)
 

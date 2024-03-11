@@ -21,6 +21,7 @@ class Book_With_Id(Book):
 # Review
 class Review(BaseModel):
     review: str
+    book_id: int
     book_title: str
 
     class Config:

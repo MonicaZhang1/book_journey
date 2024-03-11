@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import models as models
 from database import engine
-from routers import books
+from routers import books, reviews
 
 
 # create FastAPI app
@@ -24,4 +24,5 @@ models.Base.metadata.create_all(bind=engine)
 
 # Routers
 app.include_router(books.router)
+app.include_router(reviews.router)
 # app.include_router(reviews.router)

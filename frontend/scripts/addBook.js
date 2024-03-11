@@ -12,7 +12,7 @@ async function addBookEventListener(){
             msg.innerText = "Please enter all the fields."
         }else{
             // fetch call
-            await addNewBook(title, summary);
+            await addBook(title, summary);
         }
     })
 

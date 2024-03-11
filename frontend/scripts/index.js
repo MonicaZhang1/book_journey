@@ -50,7 +50,7 @@ async function displayBook(book) {
 
     const deleteBookBtn = await createBtn('btn btn-outline-primary', 'delete-book-btn', 'Delete')
     deleteBookBtn.addEventListener('click', ()=>{
-        window.location.href = './deleteBook.html'
+        window.location.href = `./deleteBook.html?book=${book.id}`
     })
 
     // add to container 
@@ -59,15 +59,16 @@ async function displayBook(book) {
     container.append(deleteBookBtn)
     document.getElementById('book-container').append(container)
 
-    // // card clicked, redirect to book's review page
+    // card clicked, redirect to book's review page
     // container.addEventListener('click', () => {
     //     window.location.href = `./books.html?book=${book.id}`;
     // })
 
     // when title is clicked, redirect to book's review page
     title.addEventListener('click', () => {
-        window.location.href = `./books.html?book=${book.id}`;
+        window.location.href = `./book.html?book=${book.id}`;
     })
+    
 }
 
 /**

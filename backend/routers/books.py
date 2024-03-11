@@ -24,10 +24,10 @@ async def read_all_books(db: Session = Depends(get_db)):
 
 
 # dynamic param
-@router.get("/books/{title}", response_model=schemas.Book_With_Id, status_code=200)
-async def get_book_by_title(title: str, db: Session = Depends(get_db)):
-    # query and filter where title = title in url
-    book = db.query(models.Book).filter(models.Book.title == title).first()
+@router.get("/books/{id}", response_model=schemas.Book_With_Id, status_code=200)
+async def get_book_by_id(id: int, db: Session = Depends(get_db)):
+    # query and filter where id = id in url
+    book = db.query(models.Book).filter(models.Book.id == id).first()
 
     # error handling
     if book is None:
