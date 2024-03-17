@@ -18,7 +18,7 @@ async def read_all_reviews(db: Session = Depends(get_db)):
     return reviews
 
 
-# dynamic param
+# dynamic param, get review by review id 
 @router.get("/reviews/{id}", response_model=schemas.Review_With_Id, status_code=200)
 async def get_review_by_id(id: int, db: Session = Depends(get_db)):
     # query and filter where id = id in url
@@ -31,6 +31,18 @@ async def get_review_by_id(id: int, db: Session = Depends(get_db)):
     # succesful, return the review
     return review
 
+# get review by book id
+@router.get("/reviews/book/{book_id}", response_model=schemas.Review_With_Id, status_code=200)
+async def get_review_by_bookId(book_id: int, db: Session = Depends(get_db)):
+    # query and filter where id = id in url
+    review = db.query(models.Review).filter(models.Review.book_id == book_id).first()
+
+    # error handling
+    if review is None:
+        raise HTTPException(status_code=404, detail="Review not found.")
+
+    # succesful, return the review(s)
+    return review
 
 @router.post("/reviews", response_model=schemas.Review_With_Id, status_code=201)
 async def add_new_review(new_review: schemas.Review, db: Session = Depends(get_db)):

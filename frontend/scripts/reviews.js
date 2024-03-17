@@ -46,27 +46,16 @@ async function displayReview(review) {
     user_review.className = 'card-review'
     user_review.innerText = review.review
 
-    // edit functionality
-    const editReviewBtn = await createBtn('btn btn-outline-primary', 'edit-review-btn', 'Edit')
-    editReviewBtn.addEventListener('click', ()=>{
-        window.location.href = `./editReview.html?book=${book.id}`
-    })
-
-    const deleteReviewBtn = await createBtn('btn btn-outline-primary', 'delete-review-btn', 'Delete')
-    deleteReviewBtn.addEventListener('click', ()=>{
-        window.location.href = './deleteReview.html'
-    })
-
     // add to container 
     container.append(title)
     container.append(user_review)
-    container.append(editReviewBtn)
-    container.append(deleteReviewBtn)
+    // container.append(editReviewBtn)
+    // container.append(deleteReviewBtn)
     document.getElementById('review-container').append(container)
 
     // when title is clicked, redirect to review's review page
     title.addEventListener('click', () => {
-        window.location.href = `./review.html?review=${review.id}`;
+        window.location.href = `./book.html?book=${review.book_id}`;
     })
 }
 

@@ -1,14 +1,13 @@
-async function addReviewEventListener(){
-
+async function editReviewEventListener(){
     const url = new URLSearchParams(window.location.search);
     const bookId = url.get('book');
-
+    const id = url.get('review')
     // submit action 
     const submitBtn = document.getElementById('submit-review')
     submitBtn.addEventListener('click', async(event)=>{
         event.preventDefault();
-        const title = document.getElementById('add-review-title').value
-        const review = document.getElementById('add-review').value
+        const title = document.getElementById('edit-review-title').value
+        const review = document.getElementById('edit-review').value
         const msg = document.getElementById('error-message')
         msg.style.color = "red"
 
@@ -16,7 +15,7 @@ async function addReviewEventListener(){
             msg.innerText = "Please enter all the fields."
         }else{
             // fetch call
-            await addReview(bookId, title, review);
+            await editReview(id, bookId, title, review);
         }
     })
 
@@ -28,5 +27,5 @@ async function addReviewEventListener(){
 }
 
 window.onload = async()=>{
-    await addReviewEventListener()
+    await editReviewEventListener()
 }

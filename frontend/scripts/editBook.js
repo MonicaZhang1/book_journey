@@ -2,7 +2,7 @@ async function editBookEventListener(){
     const url = new URLSearchParams(window.location.search);
     const bookId = url.get('book');
     // submit action 
-    const submitBtn = document.getElementById('edit-book')
+    const submitBtn = document.getElementById('submit-book')
     submitBtn.addEventListener('click', async(event)=>{
         event.preventDefault();
         const title = document.getElementById('edit-book-title').value

@@ -41,10 +41,10 @@ function createNavBar(){
     toggleBtn.type = 'button'
 
     // hamburger icon 
-    const toggleIcon = document.createElement('span')
-    toggleIcon.className = "navbar-toggle-icon"
-    toggleBtn.append(toggleIcon)
-    navContainer.append(toggleBtn)
+    // const toggleIcon = document.createElement('span')
+    // toggleIcon.className = "navbar-toggle-icon"
+    // toggleBtn.append(toggleIcon)
+    // navContainer.append(toggleBtn)
 
     // container markup nav bar
     const navMarkup = document.createElement('div')

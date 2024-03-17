@@ -66,7 +66,7 @@ async function editBook(id, title, summary){
             title: title,
             summary: summary
         }
-        const url = `http://127.0.0.1:8000/books/${id}}`
+        const url = `http://127.0.0.1:8000/books/${id}`
         const res = await fetch(url, {
             method: 'PUT',
             headers: {
@@ -76,7 +76,7 @@ async function editBook(id, title, summary){
         })
         const result = await res.json();
      
-        if (res.status === 201) {
+        if (res.status === 200) {
             window.location.href = `./index.html`
         }
         else{
@@ -84,7 +84,7 @@ async function editBook(id, title, summary){
         }
 
     } catch (error) {
-        document.getElementById('error-message').innerText = "There was a problem adding the book."
+        document.getElementById('error-message').innerText = "There was a problem editing the book."
     }
 }
 
@@ -163,9 +163,9 @@ async function getAllReviews(){
     }
 }
 
-async function getReview(id){
+async function getReview(book_id){
     try {
-        const url = `http://127.0.0.1:8000/reviews/${id}`
+        const url = `http://127.0.0.1:8000/reviews/book/${book_id}`
         const res = await fetch(url, {
             method: "GET",
             headers: {
@@ -188,9 +188,10 @@ async function getReview(id){
  * Add a new Review to db 
  * @returns new Review data/object
  */
-async function addReview(id, book_title, review){
+async function addReview(book_id, book_title, review){
     try {
         const body = {
+            book_id: book_id,
             book_title: book_title,
             review: review
         }
@@ -205,7 +206,7 @@ async function addReview(id, book_title, review){
         const result = await res.json();
      
         if (res.status === 201) {
-            window.location.href = `./book.html?book=${id}`
+            window.location.href = `./book.html?book=${book_id}`
         }
         else{
             message.innerText = error;          
@@ -217,6 +218,37 @@ async function addReview(id, book_title, review){
     }
 }
 
+/**
+ * Edit a new review in db 
+ */
+async function editReview(id, book_id, book_title, review){
+    try {
+        const body = {
+            book_id: book_id,
+            book_title: book_title,
+            review: review
+        }
+        const url = `http://127.0.0.1:8000/reviews/${id}`
+        const res = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body),
+        })
+        const result = await res.json();
+     
+        if (res.status === 200) {
+            window.location.href = `./book.html?book=${book_id}`
+        }
+        else{
+            message.innerText = error;           
+        }
+
+    } catch (error) {
+        document.getElementById('error-message').innerText = "There was a problem editing the review."
+    }
+}
 
 // GET genre recs
 async function getRecommendations(genre){

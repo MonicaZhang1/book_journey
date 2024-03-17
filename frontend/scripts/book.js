@@ -55,21 +55,21 @@ async function displayReviewPage(){
     // create review element
     const user_review = document.createElement('p')
     user_review.className = 'card-review'
-    user_review.innerText = book.review 
+    user_review.innerText = review.review 
 
-    // const editReviewBtn = await createBtn('btn btn-outline-primary', 'edit-review-btn', 'Edit')
-    // editReviewBtn.addEventListener('click', ()=>{
-    //     window.location.href = './editReview.html'
-    // })
+    const editReviewBtn = await createBtn('btn btn-outline-primary', 'edit-review-btn', 'Edit')
+    editReviewBtn.addEventListener('click', ()=>{
+        window.location.href = `./editReview.html?book=${bookId}&review=${review.id}`
+    })
 
     const deleteReviewBtn = await createBtn('btn btn-outline-primary', 'delete-review-btn', 'Delete')
     deleteReviewBtn.addEventListener('click', ()=>{
-        window.location.href = './deleteReview.html'
+        window.location.href = `./deleteReview.html?book=${bookId}&review=${review.id}`
     })
 
     // add to container 
     container.append(user_review)
-    // container.append(editReviewBtn)
+    container.append(editReviewBtn)
     container.append(deleteReviewBtn)
     document.getElementById('book-review-container').append(container)
 }
