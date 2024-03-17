@@ -15,7 +15,7 @@ async function getAllBooks(){
             return res.json();
         }
         else{
-            message.innerText = error;            //check if err ever go to this block
+            message.innerText = error;           
         }
 
     } catch (error) {
@@ -47,7 +47,7 @@ async function addBook(title, summary){
             window.location.href = `./index.html`
         }
         else{
-            message.innerText = error;            //check if err ever go to this block
+            message.innerText = error;          
         }
 
     } catch (error) {
@@ -57,10 +57,40 @@ async function addBook(title, summary){
     }
 }
 
+/**
+ * Edit a new book in db 
+ */
+async function editBook(id, title, summary){
+    try {
+        const body = {
+            title: title,
+            summary: summary
+        }
+        const url = `http://127.0.0.1:8000/books/${id}}`
+        const res = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body),
+        })
+        const result = await res.json();
+     
+        if (res.status === 201) {
+            window.location.href = `./index.html`
+        }
+        else{
+            message.innerText = error;           
+        }
+
+    } catch (error) {
+        document.getElementById('error-message').innerText = "There was a problem adding the book."
+    }
+}
+
 
 /**
  * Delete book 
-
  */
 async function deleteBook(id){
     try {
@@ -75,7 +105,7 @@ async function deleteBook(id){
             return res.json();
         }
         else{
-            message.innerText = error;            //check if err ever go to this block
+            message.innerText = error;           
         }
 
     } catch (error) {
@@ -100,7 +130,7 @@ async function getBook(id){
             return res.json();
         }
         else{
-            message.innerText = error;            //check if err ever go to this block
+            message.innerText = error;         
         }
 
     } catch (error) {
@@ -125,7 +155,7 @@ async function getAllReviews(){
             return res.json();
         }
         else{
-            message.innerText = error;            //check if err ever go to this block
+            message.innerText = error;            
         }
 
     } catch (error) {
@@ -146,13 +176,47 @@ async function getReview(id){
             return res.json();
         }
         else{
-            message.innerText = error;            //check if err ever go to this block
+            message.innerText = error;            
         }
 
     } catch (error) {
         message.innerText = error; 
     }
 }
+
+/**
+ * Add a new Review to db 
+ * @returns new Review data/object
+ */
+async function addReview(id, book_title, review){
+    try {
+        const body = {
+            book_title: book_title,
+            review: review
+        }
+        const url = `http://127.0.0.1:8000/reviews`
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body),
+        })
+        const result = await res.json();
+     
+        if (res.status === 201) {
+            window.location.href = `./book.html?book=${id}`
+        }
+        else{
+            message.innerText = error;          
+        }
+
+    } catch (error) {
+        console.log(error)
+        document.getElementById('error-message').innerText = "There was a problem adding the review."
+    }
+}
+
 
 // GET genre recs
 async function getRecommendations(genre){
@@ -169,7 +233,7 @@ async function getRecommendations(genre){
             return res.json();
         }
         else{
-            message.innerText = error;            //check if err ever go to this block
+            message.innerText = error;            
         }
 
     } catch (error) {
@@ -191,7 +255,7 @@ async function getRecsThriller(){
             return res.json();
         }
         else{
-            message.innerText = error;            //check if err ever go to this block
+            message.innerText = error;          
         }
 
     } catch (error) {

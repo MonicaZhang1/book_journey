@@ -4,7 +4,6 @@
 // let id;
 
 async function displayBooksPage(){
-    console.log("displayBooksPage")
     const bookContainer = document.getElementById('book-container')
     
     // create a add btn, redirect if clicked
@@ -34,7 +33,6 @@ async function displayBooksPage(){
  * @param book object 
  */
 async function displayBook(book) {
-    console.log("displayBook")
     // create new container with card class
     const container = document.createElement('div')
     container.classList.add('card')
@@ -48,6 +46,13 @@ async function displayBook(book) {
     summary.className = 'card-url'
     summary.innerText = book.summary
 
+    // edit functionality
+    const editBookBtn = await createBtn('btn btn-outline-primary', 'edit-book-btn', 'Edit')
+    editBookBtn.addEventListener('click', ()=>{
+        window.location.href = `./editBook.html?book=${book.id}`
+    })
+
+    // delete functionality 
     const deleteBookBtn = await createBtn('btn btn-outline-primary', 'delete-book-btn', 'Delete')
     deleteBookBtn.addEventListener('click', ()=>{
         window.location.href = `./deleteBook.html?book=${book.id}`
@@ -56,6 +61,7 @@ async function displayBook(book) {
     // add to container 
     container.append(title)
     container.append(summary)
+    container.append(editBookBtn)
     container.append(deleteBookBtn)
     document.getElementById('book-container').append(container)
 
@@ -76,24 +82,12 @@ async function displayBook(book) {
  * @param books list of book object 
  */
 async function displayAllBooks(books){
-    console.log("displayAllBooks")
     for (book of books){
         displayBook(book)
     }
 }
 
-// await displayBooksPage;
 
 window.onload = async () => {
-    console.log("displayBooksPage")
     await displayBooksPage();
-
-    // // make sure user is logged in
-    // id = sessionStorage.getItem("user_id");
-    // if (id === null) {
-    //     window.location.href = './login.html';
-    // }
-    // else {
-    //     await displayBooksPage;
-    // }
 }

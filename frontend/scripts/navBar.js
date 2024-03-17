@@ -71,14 +71,6 @@ function createNavBar(){
 
     navMarkup.append(navLinkContainer)
 
-    // // container for login/logout/registration 
-    // const loginOutContainer = document.createElement('div')
-    // loginOutContainer.id = "login-out-nav-container"
-    // loginOutContainer.className = 'navbar-nav ml-auto'
-    // loginOutContainer.append(createNavLink('login-out', './login.html', 'Login'))
-    // loginOutContainer.append(createNavLink('register-nav', './register.html', 'Register'))
-    // navMarkup.append(loginOutContainer)
-
     navContainer.append(navMarkup)
     navigation.append(navContainer)
 

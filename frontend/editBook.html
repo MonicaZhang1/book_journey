@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Journey</title>
 
-    <script src="./scripts/deleteBook.js" defer></script>
+    <script src="./scripts/editBook.js" defer></script>
     <script src="./scripts/navBar.js" defer></script>
     <script src="./scripts/helper.js" defer></script>
     <script src="./scripts/fetch.js" defer></script>
@@ -18,12 +18,25 @@
 </head>
 <body>
     <section class="row">
-        <h1 class="display-4 text-center">Are you sure you want to delete the book?</h1>
+        <h1 class="display-4 text-center">Edit Book</h1>
         <h4 class="text-center" id="error-message"></h4>
-        <div>
-            <button id="yes-btn" class="btn btn-success">Yes</button>
-            <button id="cancel-btn" class="btn btn-danger">Cancel</button>
-
+        <div class="add-book-container">
+            <form nonvalidate class="validated-form" enctype="multipart/form-data"> 
+                <div class="mb-3 inputBox">
+                    <span>Title</span>
+                    <input type="text" id="add-book-title" required>
+                </div>
+                <div class="mb-3 inputBox">
+                    <span>Summary</span>
+                    <input type="text" id="add-book-summary" required>
+                </div>
+                <div class="mb-3 btn-center">
+                    <button id="submit-book" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+            <div class="mb-3 btn-center">
+                <button id="cancel-book" class="btn btn-danger">Cancel</button>
+            </div>
         </div>
 
     </section>

@@ -6,10 +6,8 @@
 async function displayBookPage(){
     const url = new URLSearchParams(window.location.search);
     const bookId = url.get('book');
-    // console.log(bookdId)
 
     book = await getBook(bookId)
-    // await displaySingleBook(book)
 
     // create new container with card class
     const container = document.createElement('div')
@@ -20,13 +18,13 @@ async function displayBookPage(){
     title.className = 'card-title'
     title.innerText = book.title 
 
-    // const id = document.createElement('p')
-    // id.className = 'card-id'
-    // id.innerText = `ID: ${book.id}` 
+    const addReviewBtn = await createBtn('btn btn-outline-primary', 'add-review-btn', 'Add')
+    addReviewBtn.addEventListener('click', ()=>{
+        window.location.href = `./addReview.html?book=${bookId}`
+    })
+    // container.append(addReviewBtn);
+    document.getElementById('book-review-container').append(addReviewBtn)
 
-    // const summary = document.createElement('p')                                 
-    // summary.className = 'card-url'
-    // summary.innerText = book.summary
 
     const deleteBookBtn = await createBtn('btn btn-outline-primary', 'delete-book-btn', 'Delete')
     deleteBookBtn.addEventListener('click', ()=>{
@@ -35,8 +33,7 @@ async function displayBookPage(){
 
     // add to container 
     container.append(title)
-    // container.append(id)
-    // container.append(deleteBookBtn)
+
     document.getElementById('book-container').append(container)
 
 }
@@ -58,7 +55,7 @@ async function displayReviewPage(){
     // create review element
     const user_review = document.createElement('p')
     user_review.className = 'card-review'
-    user_review.innerText = review.review 
+    user_review.innerText = book.review 
 
     // const editReviewBtn = await createBtn('btn btn-outline-primary', 'edit-review-btn', 'Edit')
     // editReviewBtn.addEventListener('click', ()=>{
@@ -75,9 +72,6 @@ async function displayReviewPage(){
     // container.append(editReviewBtn)
     container.append(deleteReviewBtn)
     document.getElementById('book-review-container').append(container)
-
-    
-
 }
 
 

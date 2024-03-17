@@ -6,11 +6,11 @@ async function displayReviewsPage(){
     const reviewContainer = document.getElementById('review-container')
     
     // create a add btn, redirect if clicked
-    const addReviewBtn = await createBtn('btn btn-outline-primary', 'add-review-btn', 'Add')
-    addReviewBtn.addEventListener('click', ()=>{
-        window.location.href = './addReview.html'
-    })
-    reviewContainer.append(addReviewBtn);
+    // const addReviewBtn = await createBtn('btn btn-outline-primary', 'add-review-btn', 'Add')
+    // addReviewBtn.addEventListener('click', ()=>{
+    //     window.location.href = './addReview.html'
+    // })
+    // reviewContainer.append(addReviewBtn);
     document.getElementById('main-container').append(reviewContainer);
 
     // fetch call to get reviews 
@@ -46,6 +46,12 @@ async function displayReview(review) {
     user_review.className = 'card-review'
     user_review.innerText = review.review
 
+    // edit functionality
+    const editReviewBtn = await createBtn('btn btn-outline-primary', 'edit-review-btn', 'Edit')
+    editReviewBtn.addEventListener('click', ()=>{
+        window.location.href = `./editReview.html?book=${book.id}`
+    })
+
     const deleteReviewBtn = await createBtn('btn btn-outline-primary', 'delete-review-btn', 'Delete')
     deleteReviewBtn.addEventListener('click', ()=>{
         window.location.href = './deleteReview.html'
@@ -54,6 +60,7 @@ async function displayReview(review) {
     // add to container 
     container.append(title)
     container.append(user_review)
+    container.append(editReviewBtn)
     container.append(deleteReviewBtn)
     document.getElementById('review-container').append(container)
 
@@ -76,13 +83,4 @@ async function displayAllReviews(reviews){
 
 window.onload = async () => {
     await displayReviewsPage();
-
-    // // make sure user is logged in
-    // id = sessionStorage.getItem("user_id");
-    // if (id === null) {
-    //     window.location.href = './login.html';
-    // }
-    // else {
-    //     await displayBooksPage;
-    // }
 }
