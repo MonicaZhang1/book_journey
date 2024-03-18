@@ -38,8 +38,15 @@ nav {
     text-align: center;
     justify-content: center;
     align-items: center;
+    /* margin: 50px auto;
+    padding: 0 20px; */
 }
 
-form {
+/* form {
     display: inline-block;
+} */
+
+#add-book-form, #cancel-book-div, #delete-book-div, #add-review-form, #cancel-review-div, #delete-review-div, #edit-review-div, #edit-book-form, #edit-book-div{
+    text-align: center;
+    justify-content: center;
 }

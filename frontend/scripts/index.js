@@ -1,13 +1,12 @@
 /**
  * Create the book page (homepage)
  */
-// let id;
 
 async function displayBooksPage(){
     const bookContainer = document.getElementById('book-container')
     
     // create a add btn, redirect if clicked
-    const addBookBtn = await createBtn('btn btn-outline-primary', 'add-book-btn', 'Add')
+    const addBookBtn = await createBtn('add-book-btn','btn btn-outline-primary', 'Add')
     addBookBtn.addEventListener('click', ()=>{
         window.location.href = './addBook.html'
     })
@@ -47,13 +46,13 @@ async function displayBook(book) {
     summary.innerText = book.summary
 
     // edit functionality
-    const editBookBtn = await createBtn('btn btn-outline-primary', 'edit-book-btn', 'Edit')
+    const editBookBtn = await createBtn('edit-book-btn','btn btn-outline-secondary', 'Edit')
     editBookBtn.addEventListener('click', ()=>{
         window.location.href = `./editBook.html?book=${book.id}`
     })
 
     // delete functionality 
-    const deleteBookBtn = await createBtn('btn btn-outline-primary', 'delete-book-btn', 'Delete')
+    const deleteBookBtn = await createBtn('delete-book-btn','btn btn-outline-danger', 'Delete')
     deleteBookBtn.addEventListener('click', ()=>{
         window.location.href = `./deleteBook.html?book=${book.id}`
     })
@@ -64,11 +63,6 @@ async function displayBook(book) {
     container.append(editBookBtn)
     container.append(deleteBookBtn)
     document.getElementById('book-container').append(container)
-
-    // card clicked, redirect to book's review page
-    // container.addEventListener('click', () => {
-    //     window.location.href = `./books.html?book=${book.id}`;
-    // })
 
     // when title is clicked, redirect to book's review page
     title.addEventListener('click', () => {

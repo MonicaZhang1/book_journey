@@ -66,7 +66,8 @@ function createNavBar(){
     navLinkContainer.id = "nav-link-container"
     navLinkContainer.className = 'navbar-nav'
     navLinkContainer.append(createNavLink('home-nav', "./index.html", 'Home'))
-    navLinkContainer.append(createNavLink('reviews-nav', './reviews.html', 'Reviews'))    
+    navLinkContainer.append(createNavLink('reviews-nav', './reviews.html', 'Reviews'))  
+    navLinkContainer.append(createNavLink('rec-nav', './recommendations.html', 'Recommendations'))      
     navLinkContainer.append(createNavLink('help-nav', './help.html', 'Help'))    
 
     navMarkup.append(navLinkContainer)

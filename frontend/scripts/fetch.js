@@ -19,7 +19,7 @@ async function getAllBooks(){
         }
 
     } catch (error) {
-        message.innerText = error; 
+        message.innerText = "No books found."; 
     }
 }
 
@@ -51,8 +51,6 @@ async function addBook(title, summary){
         }
 
     } catch (error) {
-        // message.innerText = error; 
-        console.log(error)
         document.getElementById('error-message').innerText = "There was a problem adding the book."
     }
 }
@@ -109,7 +107,7 @@ async function deleteBook(id){
         }
 
     } catch (error) {
-        message.innerText = error; 
+        message.innerText = "There was an error deleting the book."; 
     }
 }
 
@@ -134,7 +132,7 @@ async function getBook(id){
         }
 
     } catch (error) {
-        message.innerText = error; 
+        message.innerText = "No book found."; 
     }
 }
 
@@ -159,7 +157,7 @@ async function getAllReviews(){
         }
 
     } catch (error) {
-        message.innerText = error; 
+        message.innerText = "No reviews found."; 
     }
 }
 
@@ -180,7 +178,7 @@ async function getReview(book_id){
         }
 
     } catch (error) {
-        message.innerText = error; 
+        message.innerText = "No reviews found."; 
     }
 }
 
@@ -213,7 +211,6 @@ async function addReview(book_id, book_title, review){
         }
 
     } catch (error) {
-        console.log(error)
         document.getElementById('error-message').innerText = "There was a problem adding the review."
     }
 }
@@ -250,6 +247,32 @@ async function editReview(id, book_id, book_title, review){
     }
 }
 
+/**
+ * Delete a review in db 
+ */
+async function deleteReview(id, book_id){
+    try {
+        const url = `http://127.0.0.1:8000/reviews/${id}`
+        const res = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+        const result = await res.json();
+     
+        if (res.status === 200) {
+            window.location.href = `./book.html?book=${book_id}`
+        }
+        else{
+            message.innerText = error;           
+        }
+
+    } catch (error) {
+        document.getElementById('error-message').innerText = "There was a problem deleting the review."
+    }
+}
+
 // GET genre recs
 async function getRecommendations(genre){
     try {
@@ -269,7 +292,7 @@ async function getRecommendations(genre){
         }
 
     } catch (error) {
-        message.innerText = error; 
+        message.innerText = "Error getting the recommendations."; 
     }
 }
 
@@ -291,6 +314,6 @@ async function getRecsThriller(){
         }
 
     } catch (error) {
-        message.innerText = error; 
+        message.innerText = "There was an error getting the recommendations."; 
     }
 }

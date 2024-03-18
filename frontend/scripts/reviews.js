@@ -4,13 +4,6 @@
 
 async function displayReviewsPage(){
     const reviewContainer = document.getElementById('review-container')
-    
-    // create a add btn, redirect if clicked
-    // const addReviewBtn = await createBtn('btn btn-outline-primary', 'add-review-btn', 'Add')
-    // addReviewBtn.addEventListener('click', ()=>{
-    //     window.location.href = './addReview.html'
-    // })
-    // reviewContainer.append(addReviewBtn);
     document.getElementById('main-container').append(reviewContainer);
 
     // fetch call to get reviews 
