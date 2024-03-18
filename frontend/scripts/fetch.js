@@ -296,7 +296,7 @@ async function getRecommendations(genre){
     }
 }
 
-// GET Thriller
+// GET Thriller recommendations
 async function getRecsThriller(){
     try {
         const url = `http://127.0.0.1:5000/genre/thrillers`
